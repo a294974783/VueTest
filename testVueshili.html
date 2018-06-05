@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<!-- 测试 -->
+<body>
+    <div id="app">
+        <p>{{ a }}</p>
+    </div>
+</body>
+<script>
+    new Vue({
+        data: {
+            a: 1
+        },
+        created: function () {
+            // `this` 指向 vm 实例
+            console.log('a is: ' + this.a)
+        }
+    })
+    // => "a is: 1"
+
+
+
+    var data = { a: 1 }
+    var vm = new Vue({
+        el: '#app',
+        data: data
+    })
+
+    vm.$data === data // => true
+    vm.$el === document.getElementById('app') // => true
+
+    // $watch 是一个实例方法
+    vm.$watch('a', function (newValue, oldValue) {
+        // 这个回调将在 `vm.a` 改变后调用
+        alert(1)
+        console.log(newValue + '' + oldValue)
+    })
+</script>
+
+</html>
